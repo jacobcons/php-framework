@@ -10,11 +10,11 @@ class Router
     {
     }
 
-    public function get($path, $response) {
+    public function get($path, $response): void {
         $this->routes['get'][$path] = $response;
     }
 
-    public function getResponse() {
+    public function getResponse(): string {
         $method = $this->request->getMethod();
         $path = $this->request->getPath();
         $response = $this->routes[$method][$path] ?? fn() => "404";
@@ -25,11 +25,11 @@ class Router
         }
     }
 
-    private function renderView($viewName)
+    private function renderView($viewName): string
     {
         $rootDir = Application::rootDir();
         $view = file_get_contents("{$rootDir}/views/{$viewName}.php");
         $layout = file_get_contents("{$rootDir}/views/layouts/main.php");
-        return str_replace("{{ \$slot }}", $view , $layout);
+        return str_replace("{{ content }}", $view , $layout);
     }
 }

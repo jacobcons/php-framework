@@ -14,7 +14,7 @@ class Application
 
     }
 
-    public function run() {
+    public function run(): void {
         echo $this->router->getResponse();
     }
 
