@@ -1,0 +1,15 @@
+{
+    "name": "j/php-framework",
+    "autoload": {
+        "psr-4": {
+            "J\\PhpFramework\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jacob",
+            "email": "jacobcons@gmail.com"
+        }
+    ],
+    "require": {}
+}
