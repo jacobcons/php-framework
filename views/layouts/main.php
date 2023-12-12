@@ -10,20 +10,26 @@
     <title>Document</title>
     <style type="text/tailwindcss">
         @layer base {
+            h1, h2, h3 {
+                @apply font-bold
+            }
             h1 {
-                @apply text-2xl font-bold
+                @apply text-2xl
             }
 
             h2 {
-                @apply text-xl font-bold
+                @apply text-xl
+            }
+            p {
+                @apply mt-4
             }
         }
     </style>
 </head>
 <body>
-<div class="mx-auto max-w-3xl w-11/12">
+<div class="mx-auto max-w-4xl w-11/12">
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-6">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-10">
             <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo"/>
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
