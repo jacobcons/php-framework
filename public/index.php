@@ -6,9 +6,7 @@ use J\PhpFramework\Application;
 
 $app = new Application();
 
-$app->router->get('/', function() {
-    return "index";
-});
+$app->router->get('/', 'index');
 
 $app->router->get('/about', 'about');
 

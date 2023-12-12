@@ -4,6 +4,7 @@ namespace J\PhpFramework;
 
 class Application
 {
+    private static string $rootDir;
     public readonly Router $router;
 
     public readonly Request $request;
@@ -19,6 +20,9 @@ class Application
     }
 
     public static function rootDir(): string {
-        return dirname(__DIR__);
+        if (!isset(self::$rootDir)) {
+            self::$rootDir = dirname(__DIR__);
+        }
+        return self::$rootDir;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace J\PhpFramework;
 
+use SplFileObject;
+
 class Router
 {
     private array $routes = [];
@@ -28,8 +30,18 @@ class Router
     private function renderView($viewName): string
     {
         $rootDir = Application::rootDir();
-        $view = file_get_contents("{$rootDir}/views/{$viewName}.php");
-        $layout = file_get_contents("{$rootDir}/views/layouts/main.php");
-        return str_replace("{{ content }}", $view , $layout);
+        $viewPath = "{$rootDir}/views/{$viewName}.php";
+        $lines = file($viewPath, FILE_IGNORE_NEW_LINES);
+        $firstLine = str_replace(' ', '', $lines[0]);
+        preg_match('/layout:(\w+)/', $firstLine, $matches);
+        if (count($matches) === 0) {
+            return file_get_contents($viewPath);
+        } else {
+            $layoutName = $matches[1];
+            $viewFileRest = implode("\n", array_slice($lines, 1));
+            $layout = file_get_contents("{$rootDir}/views/layouts/{$layoutName}.php");
+            $injectedViewInLayout = str_replace("{{ content }}", $viewFileRest , $layout);
+            return $injectedViewInLayout;
+        }
     }
 }
