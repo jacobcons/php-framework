@@ -1,5 +1,5 @@
 # php-framework
-Half-baked MVC style php framework with ability to define routes with http method, path and handler function/name of view to render. Views can also define layouts that they get injected into.
+MVC style php framework with ability to define routes with http method, path and handler function/name of view to render. Views can also define layouts that they get injected into.
 
 
 ### Example of defining routes
